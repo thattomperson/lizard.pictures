@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "lizard-pictures",
+  "alias": "lizard.pictures",
+  "builds": [
+    { "src": "public/*", "use": "@now/static" }
+  ]
+}
