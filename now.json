@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "name": "lizard-pictures",
+  "name": "lizard.pictures",
   "alias": "lizard.pictures",
   "builds": [
-    { "src": "public/*", "use": "@now/static" }
+    { "src": "public/**/*", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "public/index.html" },
+    { "src": "/lizard.gif", "dest": "public/lizard.gif" }
   ]
 }
+  
