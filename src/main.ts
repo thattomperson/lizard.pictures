@@ -46,7 +46,7 @@ var scene = new Scene();
 
 var renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.insertBefore(renderer.domElement, document.getElementById('info') )
+document.body.appendChild(renderer.domElement)
 
 var aLight = new AmbientLight(0xffffff, .7)
 scene.add( aLight );
