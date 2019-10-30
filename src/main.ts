@@ -28,8 +28,6 @@ const concreteMaterial = new MeshStandardMaterial( { map: concreteTexture, metal
 const w = 10;
 const d = 10;
 
-
-
 const cw = 500/3;
 const cd = cw;
 const ch = 333/3;
@@ -48,7 +46,7 @@ var scene = new Scene();
 
 var renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+document.body.insertBefore(renderer.domElement, document.getElementById('info') )
 
 var aLight = new AmbientLight(0xffffff, .7)
 scene.add( aLight );

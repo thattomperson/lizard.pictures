@@ -19,7 +19,7 @@ export default {
       browser: true,
     }),
     url(),
-    dev && serve('dist'),
+    dev && serve('public'),
     dev && livereload(),
     // html({
     //   template: 'src/template.html',
