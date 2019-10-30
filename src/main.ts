@@ -160,8 +160,8 @@ function shuffle(array: Point[]) {
 }
 
 function generate(point: Point, depth: number) {
-  if (d > maxdepth) {
-    maxdepth = d;
+  if (depth > maxdepth) {
+    maxdepth = depth;
     deepest = point;
   }
   cells[point.x][point.y].visited = true;
@@ -181,7 +181,7 @@ function generate(point: Point, depth: number) {
     if (point.x > n.x) cells[n.x][n.y].eastWall = false;
     if (point.y < n.y) cells[point.x][point.y].southWall = false;
     if (point.y > n.y) cells[n.x][n.y].southWall = false;
-    generate(n, d + 1);
+    generate(n, depth + 1);
   }
   queue.push(point);
 }
@@ -230,12 +230,14 @@ for (let x = 0; x < w; x++) {
 for (let x = 0; x < w; x++) {
   for (let z = 0; z < d; z++) {
     const c = cells[x][z]
-    let finish = false
+    let isFinish = false
     if (deepest) {
-      finish = x == deepest.x && z == deepest.y
+      isFinish = (x == deepest.x && z == deepest.y)
     }
+
+    let isStart = x == start.x && z == start.y;
     
-    cell(x, z, c.northWall, c.southWall, c.eastWall, c.westWall, x == start.x && z == start.y, )
+    cell(x, z, c.northWall, c.southWall, c.eastWall, c.westWall, isStart, isFinish)
   }
 }
 
