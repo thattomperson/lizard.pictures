@@ -10,7 +10,7 @@ const dev = process.env.ROLLUP_WATCH
 export default {
   input: 'src/main.ts',
   output: {
-    dir: 'dist',
+    dir: 'public',
     format: 'iife'
   },
   plugins: [
