@@ -11,26 +11,25 @@ import {
 } from 'three'
 
 import {FirstPersonControls} from 'three/examples/jsm/controls/FirstPersonControls'
+import Controller from './controller'
 
-import lizardImage from './lizard.gif';
-const lizardTexture = new TextureLoader().load( lizardImage );
+
+const lizardTexture = new TextureLoader().load( require('./textures/lizard.gif') );
 const lizardMaterial = new MeshStandardMaterial( { map: lizardTexture, metalness: 0 } );
 
 const finishMaterial = new MeshBasicMaterial( { color: '#ff0000' } );
 const startMaterial = new MeshBasicMaterial( { color: '#00ff00' } );
 
-
-import concreteImage from './concrete.jpg';
-const concreteTexture = new TextureLoader().load( concreteImage );
+const concreteTexture = new TextureLoader().load( require('./textures/concrete.jpg') );
 const concreteMaterial = new MeshStandardMaterial( { map: concreteTexture, metalness: 0 } );
 
 
 const w = 10;
 const d = 10;
 
-const cw = 500/3;
+const cw = 150;
 const cd = cw;
-const ch = 333/3;
+const ch = 100;
 
 const wallGeometry = new PlaneGeometry( cw, ch );
 const floorGeometry = new PlaneGeometry( cw, cd );
@@ -199,7 +198,9 @@ camera.position.x= start.x * cw
 camera.position.y= 0
 camera.position.z= start.y * cw
 camera.updateProjectionMatrix()
-const controls = new FirstPersonControls( camera, renderer.domElement );
+
+const controller = new Controller(camera, renderer.domElement)
+// const controls = new FirstPersonControls( camera, renderer.domElement );
 
 
 for (let x = 0; x < w; x++) {
@@ -246,7 +247,7 @@ for (let x = 0; x < w; x++) {
 function animate() {
   requestAnimationFrame( animate );
 
-  controls.update(1)
+  controller.update(1)
   camera.position.y = 0
   // camera.rotation.y += 0.01
   // camera.updateProjectionMatrix()
