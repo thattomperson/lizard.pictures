@@ -6,9 +6,8 @@
   "author": "Thomas Albrighton <thomasalbrighton@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "rollup -c -w",
-    "build": "rollup -c",
-    "build-webpack": "webpack --mode development"
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "file-loader": "^4.2.0",
