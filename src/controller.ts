@@ -68,7 +68,6 @@ export default class Controller {
 	};
 
 	_onKeyUp(event: KeyboardEvent) {
-
 		switch ( event.keyCode ) {
 			case 38: /*up*/
 			case 87: /*W*/ this.moveForward = false; break;
@@ -86,7 +85,7 @@ export default class Controller {
     }
 	};
 
-  _pointerLock(event: Event) {
+  private _pointerLock(event: Event) {
     this.pointerLocked = document.pointerLockElement === this.canvas
   }
 

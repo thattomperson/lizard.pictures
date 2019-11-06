@@ -1,28 +1,37 @@
 import {
   Scene,
-  PerspectiveCamera,
   WebGLRenderer,
+  TextureLoader,
+
+  AmbientLight,
+
+  Camera,
+  PerspectiveCamera,
+  
   MeshStandardMaterial,
   MeshBasicMaterial,
-  Mesh,
-  AmbientLight,
-  TextureLoader,
+  
   PlaneGeometry,
+  CylinderGeometry,
+  
+  Mesh,
+  Texture,
+  Material,
+
 } from 'three'
 
-import {FirstPersonControls} from 'three/examples/jsm/controls/FirstPersonControls'
 import Controller from './controller'
 
+type State = number
 
 
 
-const lizardTexture = new TextureLoader().load(require('./textures/lizard.gif').default);
+import lizardImage from './textures/lizard.gif'
+const lizardTexture = new TextureLoader().load(lizardImage);
 const lizardMaterial = new MeshStandardMaterial( { map: lizardTexture, metalness: 0 } );
 
-const finishMaterial = new MeshBasicMaterial( { color: '#ff0000' } );
-const startMaterial = new MeshBasicMaterial( { color: '#00ff00' } );
-
-const concreteTexture = new TextureLoader().load( require('./textures/concrete.jpg').default );
+import concreteImage from './textures/concrete.jpg'
+const concreteTexture = new TextureLoader().load(concreteImage);
 const concreteMaterial = new MeshStandardMaterial( { map: concreteTexture, metalness: 0 } );
 
 
@@ -35,6 +44,9 @@ const ch = 100;
 
 const wallGeometry = new PlaneGeometry( cw, ch );
 const floorGeometry = new PlaneGeometry( cw, cd );
+const playerGeometry = new CylinderGeometry(10, 10, 20)
+
+
 
 const mazeD = cd * d;
 const mazeW = cw * w;
@@ -45,9 +57,13 @@ const renderDistance = Math.sqrt(Math.pow(mazeW, 2) + Math.pow(mazeD, 2))
 var scene = new Scene();
 
 
+
 var renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild(renderer.domElement)
+
+const player = new Mesh(playerGeometry)
+scene.add(player)
 
 var aLight = new AmbientLight(0xffffff, .7)
 scene.add( aLight );
@@ -251,7 +267,11 @@ function animate() {
 
   controller.update(1)
   camera.position.y = 0
+  player.position.x = camera.position.x
+  player.position.z = camera.position.z
+
   // camera.rotation.y += 0.01
+  
   // camera.updateProjectionMatrix()
 	renderer.render( scene, camera );
 }
