@@ -10,7 +10,7 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
-    "file-loader": "^4.2.0",
+    "file-loader": "^5.0.0",
     "rollup": "^1.26.0",
     "rollup-plugin-bundle-html": "^0.2.2",
     "rollup-plugin-livereload": "^1.0.4",
