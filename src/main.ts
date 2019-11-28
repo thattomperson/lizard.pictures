@@ -14,13 +14,15 @@ import {FirstPersonControls} from 'three/examples/jsm/controls/FirstPersonContro
 import Controller from './controller'
 
 
-const lizardTexture = new TextureLoader().load( require('./textures/lizard.gif') );
+
+
+const lizardTexture = new TextureLoader().load(require('./textures/lizard.gif').default);
 const lizardMaterial = new MeshStandardMaterial( { map: lizardTexture, metalness: 0 } );
 
 const finishMaterial = new MeshBasicMaterial( { color: '#ff0000' } );
 const startMaterial = new MeshBasicMaterial( { color: '#00ff00' } );
 
-const concreteTexture = new TextureLoader().load( require('./textures/concrete.jpg') );
+const concreteTexture = new TextureLoader().load( require('./textures/concrete.jpg').default );
 const concreteMaterial = new MeshStandardMaterial( { map: concreteTexture, metalness: 0 } );
 
 
