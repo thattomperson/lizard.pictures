@@ -1,0 +1,31 @@
+{
+  "name": "lizard.pictures",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thattomperson/lizard.pictures.git",
+  "author": "Thomas Albrighton <thomasalbrighton@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "file-loader": "^5.0.0",
+    "rollup": "^1.26.0",
+    "rollup-plugin-bundle-html": "^0.2.2",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-url": "^3.0.0",
+    "ts-loader": "^6.2.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4",
+    "url-loader": "^3.0.0",
+    "webpack": "^5.0.0-beta.1",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "three": "^0.111.0"
+  }
+}
