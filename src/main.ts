@@ -34,6 +34,8 @@ import concreteImage from './textures/concrete.jpg'
 const concreteTexture = new TextureLoader().load(concreteImage);
 const concreteMaterial = new MeshStandardMaterial( { map: concreteTexture, metalness: 0 } );
 
+const finishMaterial = new MeshBasicMaterial( { color: '#ff0000' } );
+const startMaterial = new MeshBasicMaterial( { color: '#00ff00' } );
 
 const w = 10;
 const d = 10;
@@ -113,6 +115,8 @@ function cell(x: number, z: number, north: boolean, south: boolean, east: boolea
     scene.add( wall );
   }
 
+
+  
   const floorMaterial = start ? startMaterial : finish ? finishMaterial : concreteMaterial
 
   const floor = new Mesh( floorGeometry, floorMaterial );
