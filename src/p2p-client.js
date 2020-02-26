@@ -212,7 +212,14 @@
     // FIXME: these timeouts should be configurable
     this.connectionTimeout = 10 * ONE_SECOND;
     this.pingTimeout = 1 * ONE_SECOND;
-    this.connectionServers = {iceServers:[{urls:['stun:stun.l.google.com:19302', 'turn:turn01.hubl.in?transport=udp']}]};
+    this.connectionServers = {iceServers:[
+      {urls:['stun:stun.l.google.com:19302']},
+      {
+        urls:['turn:192.158.28.39:3478?transport=udp'],
+        username: '28224511:1379330808',
+        credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA='
+      }
+    ]};
     this.connectionOptions = null;
     this.channelOptions = {
       RELIABLE: {
