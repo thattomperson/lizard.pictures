@@ -8,8 +8,6 @@ export let connection
 
 export let location = [0,1,0]
 
-console.log(connection)
-
 connection.onmessage = (label, msg) => {
   location = JSON.parse(window.atob(msg.data))
 }

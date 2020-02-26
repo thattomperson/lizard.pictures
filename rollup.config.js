@@ -56,7 +56,8 @@ export default {
       
       glsl({
         include: '**/*.glsl',
-        sourceMap: true
+        sourceMap: true,
+        compress: !dev,
       }),
       url({
         publicPath: '/client/'

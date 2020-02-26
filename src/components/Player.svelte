@@ -6,7 +6,6 @@ import { onMount } from 'svelte'
 
 export let location = new Float32Array([1, 1, 2])
 export let rotation = 0;
-export let connections = []
 
 $: targetLocation = new Float32Array([Math.cos(rotation), 0, Math.sin(rotation)])
 
@@ -63,7 +62,6 @@ onMount(() => {
     
     if (walking) {
       location = translate(location, 0.1, rotation)
-      Object.values(connections).forEach(c => c.send('unreliable', window.btoa(JSON.stringify(location))))
     }
   };
 
@@ -76,9 +74,9 @@ onMount(() => {
 
 
 <Group location={location}>
-  <Mesh
+  <!-- <Mesh
     geometry={sphere()}
-  />
+  /> -->
   <Target id="target" location={targetLocation} />
   <PerspectiveCamera location={[0,0,0]} lookAt="target" near={0.01} far={1000}/>
 </Group>

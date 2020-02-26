@@ -32,7 +32,7 @@
   />
   {/if}
   {#if light}
-  <Torch location={[0,1,-1]}/>
+  <FireTorch location={[0,1,-1]}/>
   {/if}
 
   <!-- South -->
@@ -72,6 +72,7 @@
 
 <script>
   import Torch from './Torch.svelte'
+  import FireTorch from './FireTorch.svelte'
   import { Mesh, plane, Group, Texture } from '@sveltejs/gl'
   import { MuddyGrass, MossyStone } from '../textures'
 

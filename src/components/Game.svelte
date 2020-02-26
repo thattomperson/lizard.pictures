@@ -23,14 +23,13 @@
   }
 
   const peer = new Peer(brokerUrl, {video: false, audio: false})
-  const connections = {}
+  const connections = [];
 
   peer.onconnection = connection => {
     console.log('connected: ' + connection.id)
-    connections[connection.id] = connection
+    connections.push(connection)
     connection.ondisconnect = () => {
-      console.log('disconnected: ' + connection.id)
-      delete connections[connection.id]
+      connections = connections.splice(connections.indexOf(connection), 1)
     }
     connection.onerror = error => console.error(error)
   }
@@ -60,6 +59,10 @@
     peer.connect(brokerSession)
   }
 
+  const encode = d => window.btoa(JSON.stringify(d))
+
+  let playerLocation
+  $: connections.forEach(c => c.send('unreliable', encode(playerLocation)))
 
 </script>
 
@@ -68,11 +71,11 @@
 {/if}
 
 <GL.Scene>
-	<GL.AmbientLight intensity={0.1}/>
+	<GL.AmbientLight intensity={0.5}/>
 
-  <Player connections={connections} />
+  <Player bind:location={playerLocation} />
 
-  {#each Object.values(connections) as connection (connection.id)}
+  {#each connections as connection (connection.id)}
     <PeerPlayer connection={connection} />
   {/each}
   
